@@ -1,16 +1,24 @@
 <?php
+use \App\Http\Middleware\login;
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+Route::group(['prefix'=>'/'],function () {
 
-Route::get('/', function () {
-    return view('index');
+    Route::post('/doLogin', 'UsersController@doLogin');
+
+    Route::get('/admin', 'HomeController@index');
+
+    Route::get('/usuarios', [
+        'uses' => 'UsersController@userForm',
+        'as' => 'usuarios.view'
+    ])->middleware(login::class);
+
+    Route::get('/getUsers', [
+        'uses' => 'UsersController@getUsrs',
+        'as' => 'index.usr'
+    ]);
+
+    Route::post('/addUser', [
+        'uses' => 'UsersController@addUser'
+    ]);
+
 });
