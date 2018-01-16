@@ -2,17 +2,8 @@ var app = new Vue({
     el: '#app',
     data: {
         message: 'Usuarios',
-        options: [{
-            value: 0,
-            text: 'Seleccione el Tipo de Usuario'
-        },{
-            value: 1,
-            text: 'Administrador'
-        },{
-            value: 2,
-            text: 'Contribuyente'
-        }
-        ],
+        table : '',
+        filtro: ''
     },
     created: function () {
         var tabla = $('#tabla').DataTable({
@@ -50,12 +41,13 @@ var app = new Vue({
                 sLoadingRecords: '<span style="width:100%;"><img src="http://www.snacklocal.com/images/ajaxload.gif"></span>'
             }
         });
-        $('#tablaProSAT').DataTable({
+        this.table = $('#tablaProSAT').DataTable({
                 'scrollX': true,
                 'scrollY': '200px',
                 "processing": true,
                 "serverSide": true,
-                "ajax": document.location.protocol + '//' + document.location.host + '/getSerSAT',
+                "searching": false,
+                "ajax": document.location.protocol + '//' + document.location.host + '/getSerSAT/allproducts',
                 "columnDefs": [
                     {"width": "40%", "targets": [0, 1, 2]}
                 ],
@@ -143,6 +135,38 @@ var app = new Vue({
         selAsociacion:function (id, name) {
             $('#agrupaPro').val(id);
             $('#agrupaProDes').val(name);
+        },
+        filtrar:function () {
+           this.table.destroy();
+             filtrotab = (this.filtro == '') ? 'allproducts':this.filtro.replace(' ','-');
+            this.table = $('#tablaProSAT').DataTable({
+                'scrollX': true,
+                'scrollY': '200px',
+                "processing": true,
+                "serverSide": true,
+                "searching": false,
+                "ajax": document.location.protocol + '//' + document.location.host + '/getSerSAT/'+ filtrotab,
+                "columnDefs": [
+                    {"width": "40%", "targets": [0, 1, 2]}
+                ],
+                columns: [
+                    {data: 'CVEPROSAT'},
+                    {data: 'DESPROSAT'},
+                    {
+                        data: function (row) {
+                            str = '<div align="right">';
+                            str += '<a class="btn btn-primary" onclick="app.selAsociacion('+
+                                row['CVEPROSAT']+',\''+row['DESPROSAT']+'\')">Seleccionar</a>';
+                            str += '</div>';
+                            return str;
+                        }
+                    }
+                ],
+                'language': {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json',
+                    sLoadingRecords: '<span style="width:100%;"><img src="http://www.snacklocal.com/images/ajaxload.gif"></span>'
+                }
+            });
         }
     }
 });

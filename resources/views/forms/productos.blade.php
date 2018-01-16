@@ -111,6 +111,18 @@
                                     <input type="text" class="form-control" id="agrupaProDes">
                                     <input type="hidden" id="agrupaPro" name="agrupaPro">
                                     <br>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" id="filtratabla"
+                                                   v-model="filtro" placeholder="Busqueda" v-on:keyup.enter="filtrar">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a href="#" class="btn btn-success" v-on:click="filtrar">
+                                                Buscar
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <br>
                                     <table id="tablaProSAT">
                                         <thead>
                                         <tr>
