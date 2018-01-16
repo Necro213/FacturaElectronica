@@ -69,7 +69,7 @@ Route::group(['prefix'=>'/'],function () {
         'uses' => 'generalController@getTipoUnidad'
     ]);
 
-    Route::get('/getSerSAT',[
+    Route::get('/getSerSAT/{filtro}',[
         'uses' => 'generalController@getSerSAT'
     ]);
 

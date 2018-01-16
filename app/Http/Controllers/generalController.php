@@ -137,10 +137,16 @@ class generalController extends Controller
         return Response::json($respuesta);
     }
 
-    function getSerSAT(){
+    function getSerSAT($filtro){
         try{
-            DB::connection()->disableQueryLog();
-            $queries = DB::select('select * from PRODUCTOSSAT');
+            if($filtro != "allproducts") {
+                $filtro = str_replace('-', ' ', $filtro);
+                DB::connection()->disableQueryLog();
+                $queries = DB::select('select * from PRODUCTOSSAT where [DESPROSAT] like \'%' . $filtro . '%\''.
+                    'or [CVEPROSAT] like \'%' . $filtro . '%\'');
+            }else{
+                $queries = DB::select('select * from PRODUCTOSSAT');
+            }
             $respuesta = ["code" => 200, "msg" => $queries, 'detail' => 'success'];
         }catch (Exception $e){
             $respuesta = ["code" => 500, "msg" => $e->getMessage(), 'detail' => 'error'];
