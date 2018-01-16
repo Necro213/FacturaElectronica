@@ -24,7 +24,7 @@ class generalController extends Controller
             if($request->cookie('admin') == null){
                 return view('auth.login');
             }elseif($request->cookie('admin')) {
-                return view('forms.configuraciones');
+                return view('forms.configuraciones',['idUsuario' => $id]);
             }
         }catch (Exception $e){
 
@@ -54,9 +54,9 @@ class generalController extends Controller
         return Response::json($respuesta);
     }
 
-    function UnidadDeMedida(){
+    function UnidadDeMedida($id){
         try{
-            $unidades = TipoUnidad::all();
+            $unidades = TipoUnidad::all()->where('idUsuario',$id);
 
             foreach ($unidades as $unidad){
                 $dato = DB::select('select nom_uni from Clave_Unidad where clave_unidad = \''.$unidad->CVEUNISAT.'\'');

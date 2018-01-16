@@ -16,7 +16,9 @@ class TABLAUNIMED extends Migration
             $table->integer('CVEUNI');
             $table->string('NOMUNI',30)->nullable();
             $table->string('CVEUNISAT',3)->nullable();
+            $table->integer('idUsuario');
 
+            $table->foreign('idUsuario')->references('id')->on('users');
             $table->primary('CVEUNI');
         });
     }

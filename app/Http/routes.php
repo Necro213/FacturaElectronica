@@ -77,7 +77,7 @@ Route::group(['prefix'=>'/'],function () {
         'uses' => 'generalController@getUnidadesSAT'
     ]);
 
-    Route::get('/UnidadDeMedida',[
+    Route::get('/UnidadDeMedida/{id}',[
         'uses' => 'generalController@UnidadDeMedida'
     ]);
 
@@ -86,7 +86,11 @@ Route::group(['prefix'=>'/'],function () {
     ]);
 
     //Parte de las configuraciones
-    Route::post('/config/newUnidad',[
+    Route::post('/config/{id}/newUnidad',[
         'uses' => 'configController@addUnidadDeMedida'
+    ]);
+
+    Route::post('/config/{id}/newSerieFact',[
+        'uses' => 'configController@addSerieFactura'
     ]);
 });

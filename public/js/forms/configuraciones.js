@@ -4,6 +4,7 @@ var vue = new Vue({
         message: 'algo',
     },
     created:function () {
+        id = $('#idUsuario').val();
         var ivatabla = $('#ivatable').dataTable();
         var iepstabla = $('#iepstable').dataTable();
         var unidadtabla = $('#unidadtable').dataTable({
@@ -11,7 +12,7 @@ var vue = new Vue({
             'scrollY': '600px',
             "processing": true,
             "serverSide": true,
-            "ajax": document.location.protocol + '//' + document.location.host + '/UnidadDeMedida',
+            "ajax": document.location.protocol + '//' + document.location.host + '/UnidadDeMedida/'+id,
             columns: [
                 {width: "10%",data: 'CVEUNI'},
                 {width: "50%",data: 'NOMUNI'},
@@ -241,8 +242,10 @@ var vue = new Vue({
         },
         agregaUnidad:function () {
             var data = new FormData(document.getElementById("formUnidad"));
+            id = $('#idUsuario').val();
+            console.log(id);
             $.ajax({
-                url:document.location.protocol+'//'+document.location.host  +"/config/newUnidad",
+                url:document.location.protocol+'//'+document.location.host  +"/config/"+id+"/newUnidad",
                 type:"POST",
                 data: data,
                 contentType:false,
@@ -255,6 +258,30 @@ var vue = new Vue({
                     swal("Realizado", json.msg, json.detail);
                     $('#modalUnidad').modal("hide");
                     $('#unidadtable').dataTable().api().ajax.reload(null,false);
+                }else{
+                    swal("Error",json.msg,json.detail);
+                }
+            }).fail(function(){
+                swal("Error","Tuvimos un problema de conexion","error");
+            });
+        },
+        agregaSerieFactura:function () {
+            var data = new FormData(document.getElementById("formSerieFacturas"));
+            id = $('#idUsuario').val();
+            $.ajax({
+                url:document.location.protocol+'//'+document.location.host  +"/config/"+id+"/newSerieFact",
+                type:"POST",
+                data: data,
+                contentType:false,
+                processData: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }).done(function(json){
+                if(json.code == 200) {
+                    swal("Realizado", json.msg, json.detail);
+                    $('#modalseriefact').modal("hide");
+                    $('#serietable').dataTable().api().ajax.reload(null,false);
                 }else{
                     swal("Error",json.msg,json.detail);
                 }

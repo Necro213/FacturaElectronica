@@ -12,6 +12,7 @@ class TipoUnidad extends Model
         'CVEUNI'
         ,'NOMUNI'
         ,'CVEUNISAT'
+        ,'idUsuario'
     ];
 
     public $timestamps = false;

@@ -12,22 +12,23 @@
 @endsection
 @section('content')
     <div id="app">
+        <input type="hidden" value="{{$idUsuario}}" id="idUsuario">
         <div class="col-md-12">
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1default" data-toggle="tab">EMISOR</a></li>
-                        <li><a href="#tab2default" data-toggle="tab">CERTIFICADOS</a></li>
-                        <li><a href="#tab3default" data-toggle="tab">CONFIGURA TIMBRADO</a></li>
-                        <li><a href="#tab4default" data-toggle="tab">COMPLEMENTOS</a></li>
-                        <li><a href="#tab5default" data-toggle="tab">VARIOS</a></li>
-                        <li><a href="#tab6default" data-toggle="tab">TRANSPORTE</a></li>
-                        <li><a href="#tab7default" data-toggle="tab">NOTARIO</a></li>
-                        <li><a href="#tab8default" data-toggle="tab">IVA</a></li>
-                        <li><a href="#tab9default" data-toggle="tab">IEPS</a></li>
-                        <li><a href="#tab10default" data-toggle="tab">UNIDAD DE MEDIDA</a></li>
-                        <li><a href="#tab11default" data-toggle="tab">FORMAS DE PAGO</a></li>
-                        <li><a href="#tab12default" data-toggle="tab">SERIES FACTURAS</a></li>
+                        <li class="active"><a href="#emisorpanel" data-toggle="tab">EMISOR</a></li>
+                        <li><a href="#certificadospanel" data-toggle="tab">CERTIFICADOS</a></li>
+                        <li><a href="#timbradopanel" data-toggle="tab">CONFIGURA TIMBRADO</a></li>
+                        <li><a href="#complementospanel" data-toggle="tab">COMPLEMENTOS</a></li>
+                        <li><a href="#variospanel" data-toggle="tab">VARIOS</a></li>
+                        <li><a href="#transportepanel" data-toggle="tab">TRANSPORTE</a></li>
+                        <li><a href="#notariopanel" data-toggle="tab">NOTARIO</a></li>
+                        <li><a href="#ivapanel" data-toggle="tab">IVA</a></li>
+                        <li><a href="#iepspanel" data-toggle="tab">IEPS</a></li>
+                        <li><a href="#unidadmedidapanel" data-toggle="tab">UNIDAD DE MEDIDA</a></li>
+                        <li><a href="#formaspagopanel" data-toggle="tab">FORMAS DE PAGO</a></li>
+                        <li><a href="#seriesfacturapanel" data-toggle="tab">SERIES FACTURAS</a></li>
                     </ul>
                 </div>
                 <form id="configForm">
@@ -35,7 +36,7 @@
                         <div class="tab-content">
 
 
-                            <div class="tab-pane fade in active" id="tab1default">
+                            <div class="tab-pane fade in active" id="emisorpanel">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="razonsoc">
@@ -212,7 +213,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab2default">
+                            <div class="tab-pane fade" id="certificadospanel">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Llave de certificado digital (.key)</label>
@@ -304,7 +305,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab3default">
+                            <div class="tab-pane fade" id="timbradopanel">
                                 <div class="row">
                                     <input type="checkbox"> <label>Timbrar con webservice de pruebas</label>
                                 </div>
@@ -333,14 +334,14 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab4default">
+                            <div class="tab-pane fade" id="complementospanel">
                                 <div class="row">
                                     <input type="checkbox" id="anexarXML" name="anexarXML"><label>Anexar a xml node Servicios parciales de construccion</label>
                                 </div>
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab5default">
+                            <div class="tab-pane fade" id="variospanel">
                                 <div class="row">
                                     <input type="checkbox" id="enviarCorreos" name="enviarCorreos"><label>Siempre enviar correo
                                     electronico de las facturas impresas</label><br>
@@ -426,12 +427,12 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab6default">
+                            <div class="tab-pane fade" id="transportepanel">
                                 <input type="checkbox" id="remdes" name="remdes"><label>Utilizar remitente y destinatario (Configuracion para Transporte)</label>
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab7default">
+                            <div class="tab-pane fade" id="notariopanel">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="notEntidad">Entidad Federativa</label>
@@ -462,34 +463,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab8default">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="ivades">Descripcion</label>
-                                        <br>
-                                        <select name="ivades" id="ivades" class="selectpicker">
-                                            <option value="00">Seleccione I.V.A.</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ivaval">Valor</label>
-                                        <input type="number" id="ivaval" name="ivaval" class="form-control" disabled="true">
-                                    </div>
-                                </div>
-                                <br>
-                                <h3><label>Tipo de Factor</label></h3>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <input type="radio" name="ivatasa" id="ivatasa"><label> Tasa</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="radio" name="ivacuota" id="ivacuota"><label> Cuota</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="radio" name="ivaexento" id="ivaexento"><label> Exento</label>
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="ivapanel">
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -507,34 +481,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab9default">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="iepsdes">Descripcion IEPS</label>
-                                        <br>
-                                        <select name="iepsdes" id="iepsdes" class="selectpicker">
-                                            <option value="00">Seleccione IEPS</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="ivaval">Valor</label>
-                                        <input type="number" id="iepsval" name="iepsval" class="form-control" disabled="true">
-                                    </div>
-                                </div>
-                                <br>
-                                <h3><label>Tipo de Factor</label></h3>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <input type="radio" name="iepstasa" id="iepstasa"><label> Tasa</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="radio" name="iepscuota" id="iepscuota"><label> Cuota</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="radio" name="iepsexento" id="iepsexento"><label> Exento</label>
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="iepspanel">
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -552,7 +499,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab10default">
+                            <div class="tab-pane fade" id="unidadmedidapanel">
                                <div class="row">
                                    <div align="right">
                                        <a href="#" class="btn btn-success" v-on:click="modalUnidad"><i class="fa fa-plus-square" aria-hidden="true"></i> Agregar Unidad de Medida</a>
@@ -573,21 +520,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab11default">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="claveMP">Clave metodo de pago</label>
-                                        <input type="text" id="claveMP" name="claveMP" class="form-control">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="descMP">Descripcion</label>
-                                        <input type="text" id="descMP" name="descMP" class="form-control">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <br>
-                                        <a href="#" id="addMP" class="btn btn-success">Agregar</a>
-                                    </div>
-                                </div>
+                            <div class="tab-pane fade" id="formaspagopanel">
                                 <hr>
                                 <div class="row">
                                     <table id="tablaMP">
@@ -603,7 +536,7 @@
                             </div>
 
 
-                            <div class="tab-pane fade" id="tab12default">
+                            <div class="tab-pane fade" id="seriesfacturapanel">
                                 <div class="row">
                                     <div align="right">
                                         <a href="#" class="btn btn-success" v-on:click="modalserie"><i class="fa fa-plus-square" aria-hidden="true"></i> Agregar Serie</a>
@@ -713,37 +646,11 @@
                                     <input type="text" class="form-control" name="ulFolSF" id="ulFolSF">
                                 </div>
                             </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="estadoSF">Estado</label>
-                                    <select name="estadoSF" id="estadoSF" class="selectpicker" data-live-search="true"
-                                    v-on:change="ciuSF">
-                                        <option value="00">Seleccione un Estado</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="ciudadSF">Ciudad</label>
-                                    <select name="ciudadSF" id="ciudadSF" class="selectpicker" data-live-search="true"
-                                    v-on:change="locSF">
-                                        <option value="00">Seleccione una Ciudad</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="localidadSF">Localidad</label>
-                                    <select name="localidadSF" id="localidadSF" class="selectpicker" data-live-search="true">
-                                        <option value="00">Seleccione una Localidad</option>
-                                    </select>
-                                </div>
-                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" v-on:click="agregaSerieFactura">Guardar</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
