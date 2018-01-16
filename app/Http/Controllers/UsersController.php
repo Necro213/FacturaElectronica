@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
-use yajra\Datatables\Facades\Datatables;
+use yajra\Datatables\Datatables;
 
 class UsersController extends Controller
 {
@@ -18,11 +18,11 @@ class UsersController extends Controller
         try{
             if($request->cookie('admin') == null){
                 return view('auth.login');
-            }else {
-                return view('index');
+            }elseif($request->cookie('admin')) {
+                return view('forms.users',['nivel'=>$request->cookie('admin')['rol']]);
             }
         }catch (Exception $e){
-
+                return view('errors.500');
         }
     }
 
@@ -74,31 +74,35 @@ class UsersController extends Controller
         if ($request->query('id') != null) {
             if ($request->cookie('cliente') != null) {
                 Cookie::forget('cliente');
-                return redirect()->route('tienda.index')->withCookie(Cookie::forget('cliente'));
+                return redirect()->route('index')->withCookie(Cookie::forget('cliente'));
             }
         } else {
             if ($request->cookie('admin') != null) {
                 Cookie::forget('admin');
-                return redirect()->route('area.index')->withCookie(Cookie::forget('admin'));
+                return redirect()->route('index')->withCookie(Cookie::forget('admin'));
             }
         }
     }
 
     function getUsrs(Request $request){
-        if($request->cookie('admin')['rol'] == 0){
-        $users = DB::table('users')->get();
-        }elseif ($request->cookie('admin')['rol'] == 1){
-            $users = DB::table('users')->where('idReferencia',base64_decode($request->cookie('admin')['id']))->get();
-        }
-
-        foreach ($users as $user){
-            if($user->idReferencia != null){
-                $referencia = DB::table('users')->where('id',$user->idReferencia)->first();
-                $user->idReferencia = $referencia->nombre.' '.$referencia->ap_pat.' '.$referencia->ap_mat;
+        try {
+            if ($request->cookie('admin')['rol'] == 0) {
+                $users = DB::table('users')->get();
+            } elseif ($request->cookie('admin')['rol'] == 1) {
+                $users = DB::table('users')->where('idReferencia', base64_decode($request->cookie('admin')['id']))->get();
             }
-        }
 
-        return Datatables::of(collect($users))->make(true);
+            foreach ($users as $user) {
+                if ($user->idReferencia != null) {
+                    $referencia = DB::table('users')->where('id', $user->idReferencia)->first();
+                    $user->idReferencia = $referencia->nombre . ' ' . $referencia->ap_pat . ' ' . $referencia->ap_mat;
+                }
+            }
+
+            return Datatables::of(collect($users))->make(true);
+        }catch (Exception $e){
+            return view('errors.500');
+        }
     }
 
     function addUser(Request $request){
@@ -121,7 +125,7 @@ class UsersController extends Controller
                     'ap_mat' => $request->ap_mat,
                     'username' => $request->username,
                     'password' => $request->pass,
-                    'level' => 2,
+                    'level' => $request->tipo,
                     'status' => True,
                     'idReferencia' => base64_decode($request->cookie('admin')['id']),
                 ]);

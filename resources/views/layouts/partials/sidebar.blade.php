@@ -35,13 +35,10 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li><a href="{{route('usuarios.view')}}"><i class="fa fa-user" aria-hidden="true"></i> <span>Usuarios</span></a></li>
-            <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.multilevel') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                    <li><a href="#">{{ trans('adminlte_lang::message.linklevel2') }}</a></li>
-                </ul>
-            </li>
+            <li><a href="{{route('productos.view')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Productos</span></a></li>
+            <li><a href="{{route('clientes.view')}}"><i class="fa fa-users" aria-hidden="true"></i> <span>Clientes</span></a></li>
+            <li><a href="{{route('facturas.view')}}"><i class="fa fa-file-text" aria-hidden="true"></i> <span>Facturas</span></a></li>
+
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

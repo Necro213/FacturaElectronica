@@ -16,7 +16,6 @@ class PrimerTest extends TestCase
     {
         $response = $this->get(route('index.usr'));
         $respuesta = json_decode($response->response->content());
-        #dd($respuesta->code);
         $this->assertEquals(200,$respuesta->code);
 
     }

@@ -21,9 +21,8 @@ var app = new Vue({
                 }
             }).done(function (json) {
                 if(json.code == 200){
-                    swal("success", 'Sesion iniciada', json.detail).done(function () {
-                        window.location.reload();
-                    });
+                    swal("success", 'Sesion iniciada', json.detail);
+                      location.reload(true);
                 }else{
                     swal("error", json.msg , json.detail);
                 }
