@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="437b4e96-9c5d-4b3e-81d2-3fd39890aa0e" name="Default" comment="">
+<<<<<<< Updated upstream
       <change beforePath="" afterPath="$PROJECT_DIR$/public/css/forms/inputfile.css" />
       <change beforePath="" afterPath="$PROJECT_DIR$/public/js/forms/clientes.js" />
       <change beforePath="" afterPath="$PROJECT_DIR$/public/js/forms/configuraciones.js" />
@@ -25,6 +26,9 @@
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/partials/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/sidebar.blade.php" />
       <change beforePath="$PROJECT_DIR$/tests/AcachaAdminLTELaravelTest.php" afterPath="" />
       <change beforePath="$PROJECT_DIR$/tests/PrimerTest.php" afterPath="$PROJECT_DIR$/tests/PrimerTest.php" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,8 +55,13 @@
       <file leaf-file-name="configController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/configController.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="204">
               <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+=======
+            <state relative-caret-position="132">
+              <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="e#40#59#0#PHP" expanded="true" />
               </folding>
@@ -60,7 +69,21 @@
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file leaf-file-name="generalController.php" pinned="false" current-in-tab="true">
+=======
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generalController.php" pinned="false" current-in-tab="false">
+>>>>>>> Stashed changes
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/generalController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="277">
@@ -180,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2018_01_03_194815_TABLA_MONEDAS.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_01_03_195340_TABLA_FORMAS_DE_PAGO_SAT.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_01_03_195554_TABLA_INE.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_01_03_200118_TABLA_ERRORES_CFDI33.php" />
@@ -231,6 +253,7 @@
         <option value="$PROJECT_DIR$/public/js/forms/products.js" />
         <option value="$PROJECT_DIR$/resources/views/forms/productos.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/generalController.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -481,23 +504,30 @@
       <workItem from="1515985572663" duration="6477000" />
       <workItem from="1516039361704" duration="8602000" />
       <workItem from="1516073297889" duration="4586000" />
+<<<<<<< Updated upstream
       <workItem from="1516127228308" duration="612000" />
+=======
+      <workItem from="1516127228308" duration="5442000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="151862000" />
+=======
+    <option name="totallyTimeSpent" value="156692000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287037" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2526475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -549,13 +579,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_01_05_001059_TABLA_TIPOINMUEBLE.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2018_01_04_235905_TABLA_PAISES.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -936,13 +959,49 @@
             <element signature="e#3038#3361#0#PHP" expanded="false" />
             <element signature="e#3367#3694#0#PHP" expanded="false" />
             <element signature="e#3700#4039#0#PHP" expanded="false" />
+<<<<<<< Updated upstream
             <element signature="e#4484#4922#0#PHP" expanded="false" />
             <element signature="e#4928#5369#0#PHP" expanded="false" />
             <marker date="1516077323007" expanded="true" signature="1465:1545" ph="select nom_u... Clave_Unidad" />
             <marker date="1516077323007" expanded="true" signature="4164:4190" ph="select * fro... PRODUCTOSSAT" />
             <marker date="1516077323007" expanded="true" signature="4608:4634" ph="select * fro... Clave_Unidad" />
             <marker date="1516077323007" expanded="true" signature="5052:5081" ph="select * fro... FORMASDEPAGOSAT" />
+=======
+            <element signature="e#4045#4806#0#PHP" expanded="false" />
+            <marker date="1516132239206" expanded="true" signature="4280:4306" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4325" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4330" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4332" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4333" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4351" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4395" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4409" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4416" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4548" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4280:4581" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4478:4504" ph="select * fro... PRODUCTOSSAT" />
+            <marker date="1516132239206" expanded="true" signature="4936:4962" ph="select * fro... Clave_Unidad" />
+            <marker date="1516132239206" expanded="true" signature="5380:5409" ph="select * fro... FORMASDEPAGOSAT" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/configController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding>
+            <element signature="e#40#59#0#PHP" expanded="true" />
+>>>>>>> Stashed changes
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
