@@ -6,33 +6,32 @@ var app = new Vue({
         filtro: ''
     },
     created: function () {
+        id = $("#idUsuario").val();
         var tabla = $('#tabla').DataTable({
-            'scrollX': true,
-            'scrollY': '600px',
+            'scrollX':true,
+            'scrollY': '500px',
             "processing": true,
             "serverSide": true,
-            "ajax": document.location.protocol + '//' + document.location.host + '/getUsers',
-            "columnDefs": [
-                {"width": "20%", "targets": [0, 1, 2, 4]},
-                {"width": "15%", "targets": [5]}
-            ],
+            "ajax": document.location.protocol + '//' + document.location.host + '/products/'+id,
+            'createdRow':function(row,data,index){
+                $('tr', row).addClass("success");
+            },
             columns: [
-                {
-                    data: function (row) {
-                        return row['nombre'] + ' ' + row['ap_pat'] + ' ' + row['ap_mat'];
-                    }
-                },
-                {data: 'username'},
-                {data: 'level'},
-                {data: 'status'},
-                {data: 'idReferencia'},
-                {
-                    data: function (row) {
-                        str = '<div align="right">';
-                        str += (row['level'] == 2) ? '<a class="btn btn-warning" onclick="app.configurar('+row['id']+')"><i class="fa fa-cogs" aria-hidden="true"></i></a>': '';
-                        str += (row['level'] != 0) ? '<a class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>':'';
-                        str += '</div>';
-                        return str;
+                {data: 'CVEPROSAT'},
+                {data: 'DESPRO'},
+                {data: 'NOMUNI'},
+                {data: 'CVEUNISAT'},
+                {data: 'DESPROSAT'},
+                {data: 'VALTAS'},
+                {data: 'VALIEP'},
+                {data: function (row) {
+                        return row['FECPRO'].substr(0,10);
+                    }},
+                {data: 'PR1PRO'},
+                {data: 'PR2PRO'},
+                {data: 'PR3PRO'},
+                {data: function () {
+                        return 'botones';
                     }
                 }
             ],
@@ -167,6 +166,30 @@ var app = new Vue({
                     sLoadingRecords: '<span style="width:100%;"><img src="http://www.snacklocal.com/images/ajaxload.gif"></span>'
                 }
             });
-        }
+        },
+        newProduct: function () {
+            data = new FormData(document.getElementById("formProd"));
+            $.ajax({
+                url: document.location.protocol + '//' + document.location.host + "/product/new",
+                type: "POST",
+                data: data,
+                contentType: false,
+                processData: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }).done(function (json) {
+                if (json.code == 200) {
+                    swal("Realizado", json.msg, json.detail);
+                    $('#modalPro').modal("hide");
+                    this.clear();
+                    $('#tablaProd').dataTable().api().ajax.reload();
+                } else {
+                    swal("error", json.msg, json.detail);
+                }
+            }).fail(function () {
+                swal("error", "Tuvimos un problema de conexion", "error");
+            });
+        },//fin addUser
     }
 });

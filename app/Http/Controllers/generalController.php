@@ -31,8 +31,17 @@ class generalController extends Controller
         }
     }
 
-    function getProductsForm(){
-        return view('forms.productos');
+    function getProductsForm(Request $request){
+        try{
+            if($request->cookie('admin') == null){
+                return view('auth.login');
+            }elseif($request->cookie('admin')) {
+                $cokkie = $request->cookie('admin');
+                return view('forms.productos',['id' => base64_decode($cokkie['id'])]);
+            }
+        }catch (Exception $e){
+
+        }
     }
 
     function getClientesForm(){

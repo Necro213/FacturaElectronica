@@ -93,4 +93,13 @@ Route::group(['prefix'=>'/'],function () {
     Route::post('/config/{id}/newSerieFact',[
         'uses' => 'configController@addSerieFactura'
     ]);
+
+    //Parte de los Productos
+    Route::get('/products/{id}',[
+        'uses' => 'productsController@getProducts'
+    ]);
+
+    Route::post('/product/new',[
+        'uses' => 'productsController@newProduct'
+    ]);
 });

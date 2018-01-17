@@ -27,7 +27,9 @@ class TABLAPRODUCTOS extends Migration
            $table->integer('CVEIEP')->nullable();
            $table->string('CVEPROSAT',10)->nullable();
            $table->integer('CVEUNI')->nullable();
+            $table->integer('idUsuario');
 
+            $table->foreign('idUsuario')->references('id')->on('users');
            $table->primary('CVEPRO');
            $table->foreign('CVETAS')->references('CVETAS')->on('IMPUESTO');
            $table->foreign('CVEIEP')->references('CVEIEP')->on('IEPS');

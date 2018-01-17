@@ -10,6 +10,7 @@
 @endsection
 @section('content')
     <div id="app">
+        <input type="hidden" id="idUsuario" value="{{$id}}">
         <div class="row">
             <div class="col-md-10" align="left">
             </div>
@@ -18,15 +19,21 @@
             </div>
         </div>
         <br>
-        <table id="tabla">
+        <table id="tablaProd">
             <thead>
             <tr>
                 <th>Clave</th>
                 <th>Descripcion</th>
-                <th>Tipo de Unidad</th>
-                <th>Aso.pro/ser. SAT</th>
-                <th>Tasa</th>
-                <th>Precio</th>
+                <th>Tipo Unidad</th>
+                <th>clave unidad</th>
+                <th>Asoc. prod/serv SAT</th>
+                <th>I.V.A.</th>
+                <th>IEPS</th>
+                <th>Fecha</th>
+                <th>Precio 1</th>
+                <th>Precio 2</th>
+                <th>Precio 3</th>
+                <th>Acciones</th>
             </tr>
             </thead>
         </table>
@@ -75,18 +82,18 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="pr1Pro">Precio</label>
-                                    <input type="text" id="pr1Pro" name="pr1Pro" class="form-control">
+                                    <input type="number" id="pr1Pro" name="pr1Pro" class="form-control">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="pr2Pro">Precio #2</label>
-                                    <input type="text" id="pr2Pro" name="pr2Pro" class="form-control">
+                                    <input type="number" id="pr2Pro" name="pr2Pro" class="form-control">
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="pr3Pro">Precio #3</label>
-                                    <input type="text" id="pr3Pro" name="pr3Pro" class="form-control">
+                                    <input type="number" id="pr3Pro" name="pr3Pro" class="form-control">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="codPro">Codigo de Barras</label>
@@ -138,7 +145,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" v-on:click="addUser">Guardar</button>
+                        <button type="button" class="btn btn-primary" v-on:click="newProduct">Guardar</button>
                     </div>
                 </div>
             </div>
