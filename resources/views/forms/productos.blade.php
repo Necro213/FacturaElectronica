@@ -53,6 +53,7 @@
                             <div class="row">
                                 <label for="descPro">Descripcion</label>
                                 <input type="text" id="descPro" name="descPro" class="form-control">
+                                <input type="hidden" id="idpr" name="idpr">
                             </div>
                             <br>
                             <div class="row">

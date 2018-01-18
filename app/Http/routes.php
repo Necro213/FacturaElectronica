@@ -102,4 +102,8 @@ Route::group(['prefix'=>'/'],function () {
     Route::post('/product/new',[
         'uses' => 'productsController@newProduct'
     ]);
+
+    Route::delete('/productos/delete/{id}',[
+        'uses' => 'productsController@deleteProduct'
+    ]);
 });
