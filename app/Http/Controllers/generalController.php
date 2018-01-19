@@ -44,8 +44,17 @@ class generalController extends Controller
         }
     }
 
-    function getClientesForm(){
-        return view('forms.clientes');
+    function getClientesForm(Request $request){
+        try{
+            if($request->cookie('admin') == null){
+                return view('auth.login');
+            }elseif($request->cookie('admin')) {
+                $cokkie = $request->cookie('admin');
+                return view('forms.clientes',['id' => base64_decode($cokkie['id'])]);
+            }
+        }catch (Exception $e){
+
+        }
     }
 
     function getFacturasForm(){
@@ -174,6 +183,17 @@ class generalController extends Controller
         }
 
         return  Datatables::of(collect($queries))->make(true);
+    }
+
+    function getUsoCfdi(){
+        try{
+            $queries = DB::select('select * from USOCFDI');
+            $respuesta = ["code" => 200, "msg" => $queries, 'detail' => 'success'];
+        }catch (Exception $e){
+            $respuesta = ["code" => 500, "msg" => $e->getMessage(), 'detail' => 'error'];
+        }
+
+        return Response::json($respuesta);
     }
 
     function getMetodosPago(){

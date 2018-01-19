@@ -10,6 +10,7 @@
 @endsection
 @section('content')
     <div id="app">
+        <input type="hidden" id="id" value="{{$id}}">
         <div class="row">
             <div class="col-md-10" align="left">
             </div>
@@ -21,7 +22,6 @@
         <table id="tabla">
             <thead>
             <tr>
-                <th>Clave</th>
                 <th>Descripcion</th>
                 <th>Calle</th>
                 <th>No.</th>
@@ -44,9 +44,9 @@
                         <h3 class="modal-title" id="exampleModalLabel">Nuevo Cliente</h3>
                     </div>
                     <div class="modal-body">
-                        <form id="formProd">
+                        <form id="formCli">
                             <div class="row">
-                                <label for="descPro">Descripcion</label>
+                                <label for="descCli">Descripcion</label>
                                 <input type="text" id="descCli" name="descCli" class="form-control">
                             </div>
                             <br>
@@ -64,6 +64,9 @@
                                     <label for="nprCli">Nivel de Precio</label>
                                     <select name="nprCli" id="nprCli" class="selectpicker">
                                         <option value="00">Seleccione el precio</option>
+                                        <option value="1">Precio 1</option>
+                                        <option value="2">Precio 2</option>
+                                        <option value="3">Precio 3</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,13 +74,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="estCli">Estado</label>
-                                    <select name="estCli" id="estCli" class="selectpicker">
+                                    <select name="estCli" id="estCli" class="selectpicker" v-on:change="ciudades" data-live-search="true">
                                         <option value="00">Seleccione el Estado</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ciuCli">Ciudad</label>
-                                    <select name="ciuCli" id="ciuCli" class="selectpicker">
+                                    <select name="ciuCli" id="ciuCli" class="selectpicker" v-on:change="localidades" data-live-search="true">
                                         <option value="00">Seleccione la Ciudad</option>
                                     </select>
                                 </div>
@@ -86,13 +89,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="locCli">Localidad</label>
-                                    <select name="locCli" id="locCli" class="selectpicker">
+                                    <select name="locCli" id="locCli" class="selectpicker" data-live-search="true">
                                         <option value="00">Seleccione la Localidad</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="callPro">Calle</label>
-                                    <input type="text" id="callPro" name="callPro" class="form-control">
+                                    <label for="callCli">Calle</label>
+                                    <input type="text" id="callCli" name="callCli" class="form-control">
                                 </div>
                             </div>
                             <br>
@@ -100,12 +103,6 @@
                                 <div class="col-md-6">
                                     <label for="numCli">Numero</label>
                                     <input type="number" id="numCli" name="numcli" class="form-control">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="colCli">Colonia</label>
-                                    <select name="colCli" id="colCli" class="selectpicker">
-                                        <option value="00">Seleccione la Colonia</option>
-                                    </select>
                                 </div>
                             </div>
                             <br>
@@ -126,15 +123,15 @@
                                     <input type="text" id="resfCli" name="resfCli" class="form-control">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="checkbox"><label>Aplica Retencion I.V.A.</label><br>
-                                    <input type="checkbox"><label>Desglosar IEPS</label><br>
-                                    <input type="checkbox"><label>Este cliente es partido politico</label>
+                                    <input type="checkbox" id="retCli" name="retCli"><label>Aplica Retencion I.V.A.</label><br>
+                                    <input type="checkbox" id="desgCli" name="desgCli"><label>Desglosar IEPS</label><br>
+                                    <input type="checkbox" id="partCli" name="partCli"><label>Este cliente es partido politico</label>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
-                                <label for="colCli">Uso cfdi (ver 3.3)</label>
-                                <select name="colCli" id="colCli" class="selectpicker form-control">
+                                <label for="usoCli">Uso cfdi (ver 3.3)</label>
+                                <select name="usoCli" id="usoCli" class="selectpicker form-control" data-live-search="true">
                                     <option value="00">Seleccione USO CFDI</option>
                                 </select>
                             </div>
@@ -142,7 +139,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" v-on:click="addUser">Guardar</button>
+                        <button type="button" class="btn btn-primary" v-on:click="addClient">Guardar</button>
                     </div>
                 </div>
             </div>

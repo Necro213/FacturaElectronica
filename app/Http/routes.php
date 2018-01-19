@@ -85,6 +85,10 @@ Route::group(['prefix'=>'/'],function () {
         'uses' => 'generalController@getMetodosPago'
     ]);
 
+    Route::get('/getUsoCfdi',[
+        'uses' => 'generalController@getUsoCfdi'
+    ]);
+
     //Parte de las configuraciones
     Route::post('/config/{id}/newUnidad',[
         'uses' => 'configController@addUnidadDeMedida'
@@ -105,5 +109,18 @@ Route::group(['prefix'=>'/'],function () {
 
     Route::delete('/productos/delete/{id}',[
         'uses' => 'productsController@deleteProduct'
+    ]);
+
+    //Parte de los clientes
+    Route::get('/getClientes/{id}',[
+        'uses' => 'clientesController@getClientes'
+    ]);
+
+    Route::post('/client/new',[
+        'uses' => 'clientesController@newClient'
+    ]);
+
+    Route::delete('/cliente/delete/{id}',[
+        'uses' => 'clientesController@deleteClient'
     ]);
 });
