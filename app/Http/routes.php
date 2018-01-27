@@ -98,6 +98,7 @@ Route::group(['prefix'=>'/'],function () {
         'uses' => 'configController@addSerieFactura'
     ]);
 
+    Route::post('/config/{id}/saveConfig','configController@saveConfiguration');
     //Parte de los Productos
     Route::get('/products/{id}',[
         'uses' => 'productsController@getProducts'
@@ -122,5 +123,11 @@ Route::group(['prefix'=>'/'],function () {
 
     Route::delete('/cliente/delete/{id}',[
         'uses' => 'clientesController@deleteClient'
+    ]);
+
+    //parte de la factura
+    Route::get('/factura/ver',[
+        'uses' => 'facturaController@generatePDF',
+        'as' => 'pdf.generate'
     ]);
 });

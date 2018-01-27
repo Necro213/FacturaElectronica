@@ -48,7 +48,7 @@ class productsController extends Controller
                     ,'CVEIEP'  => $request->iepsPro
                     ,'CVEPROSAT'  => $request->agrupaPro
                     ,'CVEUNI'  => $request->TUPro
-                    ,'idUsuario' => base64_decode($request->cookie('admin')['id'])
+                    ,'idUsuario' => base64_decode($request->cookie('cliente')['id'])
                 ]);
 
             $respuesta = ["code" => 200, "msg" => 'El producto se agrego correctamente', 'detail' => 'success'];

@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <link href="{{asset('/css/forms/inputfile.css')}}" media="all" rel="stylesheet" type="text/css" />
-
     <link rel="stylesheet" href="{{asset('/css/menubar.css')}}">
 @endsection
 @section('contentheader_title')
@@ -74,10 +73,10 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="emiLoc">Localidad</label>
+                                        <label for="emiLoc">Colonia</label>
                                         <br>
                                         <select name="emiLoc" id="emiLoc" class="selectpicker" data-live-search="true">
-                                            <option value="00">Seleccione una Localidad</option>
+                                            <option value="00">Seleccione una Colonia</option>
                                         </select>
                                     </div>
                                 </div>
@@ -121,9 +120,11 @@
                                     <div class="col-md-6">
                                         <label for="pag">Metodo Pago (ver. 3.3)</label>
                                         <div>
-                                            <input type="radio"> Pago en una sola exhibición
+                                            <input type="radio" name="metodo" id="metodo" checked value="puse">
+                                            Pago en una sola exhibición
                                             <br>
-                                            <input type="radio"> Pago en parcialidades o diferido
+                                            <input type="radio" name="metodo" id="metodo" value="ppod">
+                                            Pago en parcialidades o diferido
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +145,7 @@
                                                 <div class="btn btn-default image-preview-input">
                                                     <span class="glyphicon glyphicon-folder-open"></span>
                                                     <span class="image-preview-input-title">Browse</span>
-                                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+                                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="logo"/>
                         <!-- rename it -->
                                                 </div>
                                             </span>
@@ -219,14 +220,15 @@
                                         <label for="">Llave de certificado digital (.key)</label>
                                         <br>
                                         <!-- file input -->
-                                        <div class="btn-group col-md-12" role="group">
-                                            <div class="btn-group" role="group">
-                                        <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="llaveKey" id="llaveKey">
-                                        </span>
-                                            </div>
-                                            <div class="btn-group" role="group">
-                                                <input type="text" name="llave" class="form-control">
+                                        <div class="form-group">
+                                            <div class="input-group input-file">
+			                                    <span class="input-group-btn">
+                                                    <input type="file" name="cerdigkey" id="cerdigkey" class="hide"
+                                                                v-on:change="cerkeychange" accept=".key">
+        		                                    <label for="cerdigkey" class="btn btn-default">Chooose</label>
+                                        		</span>
+                                                <input type="text" class="form-control" v-model="namecerkey"
+                                                       placeholder='Choose a file...' disabled/>
                                             </div>
                                         </div>
                                         <!--fin file input -->
@@ -235,14 +237,15 @@
                                         <label for="">Certificado digital (.cer)</label>
                                         <br>
                                         <!-- file input -->
-                                        <div class="btn-group col-md-12" role="group">
-                                            <div class="btn-group" role="group">
-                                        <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="certificadoCer" id="certificadoCer">
-                                        </span>
-                                            </div>
-                                            <div class="btn-group" role="group">
-                                                <input type="text" name="certificado" class="form-control">
+                                        <div class="form-group">
+                                            <div class="input-group input-file">
+			                                    <span class="input-group-btn">
+                                                    <input type="file" name="cerdigcer" id="cerdigcer" class="hide"
+                                                           v-on:change="cercerchange" accept=".cer">
+        		                                    <label for="cerdigcer" class="btn btn-default">Chooose</label>
+                                        		</span>
+                                                <input type="text" class="form-control" v-model="namecercer"
+                                                       placeholder='Choose a file...' disabled/>
                                             </div>
                                         </div>
                                         <!--fin file input -->
@@ -251,7 +254,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="numeroCer">Numero de certificadp digital</label>
+                                        <label for="numeroCer">Numero de certificado digital</label>
                                         <input type="text" class="form-control" id="numeroCer" name="numeroCer">
                                     </div>
                                     <div class="col-md-6"></div>
@@ -262,14 +265,15 @@
                                         <label for="">Archivo (.key)</label>
                                         <br>
                                         <!-- file input -->
-                                        <div class="btn-group col-md-12" role="group">
-                                            <div class="btn-group" role="group">
-                                        <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="archivoKey" id="archivoKey">
-                                        </span>
-                                            </div>
-                                            <div class="btn-group" role="group">
-                                                <input type="text" name="archivoK" class="form-control">
+                                        <div class="form-group">
+                                            <div class="input-group input-file">
+			                                    <span class="input-group-btn">
+                                                    <input type="file" name="archivokey" id="archivokey" class="hide"
+                                                           v-on:change="arckeychange" accept=".key">
+        		                                    <label for="archivokey" class="btn btn-default">Chooose</label>
+                                        		</span>
+                                                <input type="text" class="form-control" v-model="namearchkey"
+                                                       placeholder='Choose a file...' disabled/>
                                             </div>
                                         </div>
                                         <!--fin file input -->
@@ -281,18 +285,19 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="row">
+                                    <div class="row col-md-6">
                                         <label for="">Archivo (.cer)</label>
                                         <br>
                                         <!-- file input -->
-                                        <div class="btn-group col-md-12" role="group">
-                                            <div class="btn-group" role="group">
-                                        <span class="btn btn-primary btn-file">
-                                                Browse <input type="file" name="archivoCer" id="archivoCer">
-                                        </span>
-                                            </div>
-                                            <div class="btn-group" role="group">
-                                                <input type="text" name="archivoC" class="form-control">
+                                        <div class="form-group">
+                                            <div class="input-group input-file">
+			                                    <span class="input-group-btn">
+                                                    <input type="file" name="archivocer" id="archivocer" class="hide"
+                                                           v-on:change="arccerchange" accept=".cer">
+        		                                    <label for="archivocer" class="btn btn-default">Chooose</label>
+                                        		</span>
+                                                <input type="text" class="form-control" v-model="namearchcer"
+                                                       placeholder='Choose a file...' disabled/>
                                             </div>
                                         </div>
                                         <!--fin file input -->
@@ -307,7 +312,8 @@
 
                             <div class="tab-pane fade" id="timbradopanel">
                                 <div class="row">
-                                    <input type="checkbox"> <label>Timbrar con webservice de pruebas</label>
+                                    <input type="checkbox" id="timweserp" name="timweserp" v-on:change="checkboxChange('timweserp')">
+                                    <label>Timbrar con webservice de pruebas</label>
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -322,12 +328,19 @@
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <input type="checkbox"><label>Timbrar con webservice en linea</label>
+                                    <input type="checkbox" id="timweser" name="timweser" v-on:change="checkboxChange('timweser')">
+                                    <label>Timbrar con webservice en linea</label>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <label for="passTim">Contraseña</label>
-                                    <input type="password" id="passTim" name="passTim" class="form-control">
+                                    <div class="col-md-6">
+                                        <label for="userTim">Usuario</label>
+                                        <input type="text" name="userTim" id="userTim" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="passTimP">Contraseña</label>
+                                        <input type="password" id="passTim" name="passTim" class="form-control">
+                                    </div>
                                 </div>
                                 <hr>
                                 <hr>
@@ -336,28 +349,32 @@
 
                             <div class="tab-pane fade" id="complementospanel">
                                 <div class="row">
-                                    <input type="checkbox" id="anexarXML" name="anexarXML"><label>Anexar a xml node Servicios parciales de construccion</label>
+                                    <input type="checkbox" id="anexarXML" name="anexarXML" v-on:change="checkboxChange('anexarXML')">
+                                    <label>Anexar a xml node Servicios parciales de construccion</label>
                                 </div>
                             </div>
 
 
                             <div class="tab-pane fade" id="variospanel">
                                 <div class="row">
-                                    <input type="checkbox" id="enviarCorreos" name="enviarCorreos"><label>Siempre enviar correo
-                                    electronico de las facturas impresas</label><br>
-                                    <input type="checkbox" name="reciboArrendamiento" id="reciboArrendamiento"><label>Recibos
-                                    de arrendamiento</label><br>
-                                    <input type="checkbox" id="reciboHonorarios" name="reciboHonorarios"><label>Recibos de
-                                    honorarios</label><br>
-                                    <input type="checkbox" name="factServ" id="factServ"><label>Factura servicios profecionales</label><br>
-                                    <input type="checkbox" id="recDon" name="recDon"><label>Recibo de Donativos</label><br>
+                                    <input type="checkbox" id="enviarCorreos" name="enviarCorreos" v-on:change="checkboxChange('enviarCorreos')">
+                                    <label>Siempre enviar correo electronico de las facturas impresas</label>
+                                    <br>
+                                    <input type="checkbox" name="reciboArrendamiento" id="reciboArrendamiento" v-on:change="checkboxChange('reciboArrendamiento')">
+                                    <label>Recibos de arrendamiento</label>
+                                    <br>
+                                    <input type="checkbox" id="reciboHonorarios" name="reciboHonorarios" v-on:change="checkboxChange('reciboHonorarios')">
+                                    <label>Recibos de honorarios</label>
+                                    <br>
+                                    <input type="checkbox" name="factServ" id="factServ" v-on:change="checkboxChange('factServ')">
+                                    <label>Factura servicios profecionales</label>
+                                    <br>
+                                    <input type="checkbox" id="recDon" name="recDon" v-on:change="checkboxChange('recDon')">
+                                    <label>Recibo de Donativos</label>
+                                    <br>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="formDecimales">Formato de Decimales</label>
-                                        <input type="text" name="formDecimales" id="formDecimales" class="form-control">
-                                    </div>
                                     <div class="col-md-4">
                                         <label for="retHosp">% Retencion de hospedaje</label>
                                         <input type="text" name="retHosp" id="retHosp" class="form-control">
@@ -401,7 +418,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="checkbox" name="modIEX" id="modIEX"><label>Modo importa de Excel</label>
+                                        <input type="checkbox" name="modIEX" id="modIEX" v-on:change="checkboxChange('modIEX')"><label>Modo importa de Excel</label>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="checkbox" id="modIIN" name="modIIN"><label>Modo importa de Interbase</label>
@@ -418,17 +435,18 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="checkbox" name="ivaProd" id="ivaProd"><label for="">Aplica iva a precios de productos</label>
+                                        <input type="checkbox" name="ivaProd" id="ivaProd" v-on:change="checkboxChange('ivaProd')"><label for="">Aplica iva a precios de productos</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="checkbox" id="tresListas" name="tresListas"><label for="">Usar TRES listas de precios</label>
+                                        <input type="checkbox" id="tresListas" name="tresListas" v-on:change="checkboxChange('tresListas')"><label for="">Usar TRES listas de precios</label>
                                     </div>
                                 </div>
                             </div>
 
 
                             <div class="tab-pane fade" id="transportepanel">
-                                <input type="checkbox" id="remdes" name="remdes"><label>Utilizar remitente y destinatario (Configuracion para Transporte)</label>
+                                <input type="checkbox" id="remdes" name="remdes" v-on:change="checkboxChange('remdes')">
+                                <label>Utilizar remitente y destinatario (Configuracion para Transporte)</label>
                             </div>
 
 
@@ -436,7 +454,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="notEntidad">Entidad Federativa</label>
-                                        <select name="notEntidad" id="notEntidad" class="selectpicker">
+                                        <select name="notEntidad" id="notEntidad" class="selectpicker" data-live-search="true">
                                             <option value="00">Seleccione la Entidad Federativa</option>
                                         </select>
                                     </div>
@@ -562,6 +580,10 @@
                 </form>
             </div>
         </div>
+
+        <div class="row" align="right">
+            <a href="#" class="btn btn-success" v-on:click="guardarConfig">Guardar</a>
+        </div>
         <!-- modal Unidad de Medida-->
         <div class="modal fade bs-example-modal-lg" tabindex="-1" id="modalUnidad" role="dialog" aria-labelledby="Unidad de Medida">
             <div class="modal-dialog modal-lg" role="document">
@@ -667,4 +689,5 @@
     <script type="text/javascript" src="http://cdn.jsdelivr.net/vue.table/1.5.3/vue-table.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
     <script src="{{asset("js/forms/configuraciones.js")}}"> </script>
+    <script src="{{asset("js/forms/fileinput.js")}}"> </script>
 @endsection

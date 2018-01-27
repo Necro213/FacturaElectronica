@@ -1,10 +1,15 @@
 var vue = new Vue({
     el: '#app',
     data: {
-        message: 'algo',
+        timWebSer: false,
+        namecerkey: '',
+        namecercer:'',
+        namearchkey:'',
+        namearchcer:''
     },
     created:function () {
         id = $('#idUsuario').val();
+        this.inicializaCheckbox();
         var ivatabla = $('#ivatable').dataTable();
         var iepstabla = $('#iepstable').dataTable();
         var unidadtabla = $('#unidadtable').dataTable({
@@ -288,6 +293,54 @@ var vue = new Vue({
             }).fail(function(){
                 swal("Error","Tuvimos un problema de conexion","error");
             });
+        },
+        guardarConfig:function () {
+            var data = new FormData(document.getElementById("configForm"));
+            id = $('#idUsuario').val();
+            $.ajax({
+                url:document.location.protocol+'//'+document.location.host  +"/config/"+id+"/saveConfig",
+                type:"POST",
+                data: data,
+                contentType:false,
+                processData: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }).done(function(json){
+                if(json.code == 200) {
+                    swal("Realizado", json.msg, json.detail);
+                }else{
+                    swal("Error",json.msg,json.detail);
+                }
+            }).fail(function(){
+                swal("Error","Tuvimos un problema de conexion","error");
+            });
+        },
+        checkboxChange:function (item) {
+            valor = item+'';
+
+            if(($('#'+valor).val()) == 'false'){
+                $('#'+valor).val(true);
+            }else{
+                $('#'+valor).val(false);
+            }
+        },
+        inicializaCheckbox:function () {
+            $(":checkbox").val(false);
+            $("#pse").val(true);
+            $("#ppod").val(false);
+        },
+        cerkeychange:function(){
+               this.namecerkey = document.getElementById('cerdigkey').files[0].name;
+        },
+        cercerchange:function(){
+            this.namecercer = document.getElementById('cerdigcer').files[0].name;
+        },
+        arckeychange:function(){
+            this.namearchkey = document.getElementById('archivokey').files[0].name;
+        },
+        arccerchange:function(){
+            this.namearchcer = document.getElementById('archivocer').files[0].name;
         }
     }
 });

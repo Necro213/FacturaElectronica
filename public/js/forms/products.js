@@ -214,9 +214,12 @@ var app = new Vue({
         },//fin new product
         modalEdit: function (id,descripcion,tunidad,iva,ieps,pr1,pr2,pr3,cod,fec,agrupa) {
             $('#descPro').val(descripcion);
-            $('#TUPro').val(tunidad);
-            $('#ivaPro').val(iva);
-            $('#iepsPro').val(ieps);
+            $('#TUPro option[value="'+tunidad+'"]').attr('selected',true);
+            $('#TUPro').selectpicker('refresh');
+            $('#ivaPro option[value="'+iva+'"]').attr('selected',true);
+            $('#ivaPro').selectpicker('refresh');
+            $('#iepsPro option[value="'+ieps+'"]').attr('selected',true);
+            $('#iepsPro').selectpicker('refresh');
             $('#pr1Pro').val(pr1);
             $('#pr2Pro').val(pr2);
             $('#pr3Pro').val(pr3);

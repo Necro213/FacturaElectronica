@@ -9,7 +9,10 @@
         "laravel/framework": "5.2.*",
         "acacha/admin-lte-template-laravel": "2.*",
         "yajra/laravel-datatables-oracle": "~5.0",
-        "kartik-v/bootstrap-fileinput": "@dev"
+        "kartik-v/bootstrap-fileinput": "@dev",
+        "spipu/html2pdf": "^5.1",
+        "anouar/fpdf": "^2.0",
+        "setasign/fpdi-fpdf": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

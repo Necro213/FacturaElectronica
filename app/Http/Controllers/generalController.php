@@ -24,7 +24,7 @@ class generalController extends Controller
             if($request->cookie('admin') == null){
                 return view('auth.login');
             }elseif($request->cookie('admin')) {
-                return view('forms.configuraciones',['idUsuario' => $id]);
+                return view('forms.configuraciones',['idUsuario' => $id,'nivel'=>$request->cookie('admin')['rol']]);
             }
         }catch (Exception $e){
 
@@ -33,11 +33,11 @@ class generalController extends Controller
 
     function getProductsForm(Request $request){
         try{
-            if($request->cookie('admin') == null){
+            if($request->cookie('cliente') == null){
                 return view('auth.login');
-            }elseif($request->cookie('admin')) {
-                $cokkie = $request->cookie('admin');
-                return view('forms.productos',['id' => base64_decode($cokkie['id'])]);
+            }elseif($request->cookie('cliente')) {
+                $cokkie = $request->cookie('cliente');
+                return view('forms.productos',['id' => base64_decode($cokkie['id']),'nivel'=>$request->cookie('cliente')['rol']]);
             }
         }catch (Exception $e){
 
@@ -46,19 +46,28 @@ class generalController extends Controller
 
     function getClientesForm(Request $request){
         try{
-            if($request->cookie('admin') == null){
+            if($request->cookie('cliente') == null){
                 return view('auth.login');
-            }elseif($request->cookie('admin')) {
-                $cokkie = $request->cookie('admin');
-                return view('forms.clientes',['id' => base64_decode($cokkie['id'])]);
+            }elseif($request->cookie('cliente')) {
+                $cokkie = $request->cookie('cliente');
+                return view('forms.clientes',['id' => base64_decode($cokkie['id']),'nivel'=>$request->cookie('cliente')['rol']]);
             }
         }catch (Exception $e){
 
         }
     }
 
-    function getFacturasForm(){
-        return view('forms.facturas');
+    function getFacturasForm(Request $request){
+        try{
+            if($request->cookie('cliente') == null){
+                return view('auth.login');
+            }elseif($request->cookie('cliente')) {
+                $cokkie = $request->cookie('cliente');
+                return view('forms.facturas',['nivel'=>$request->cookie('cliente')['rol']]);
+            }
+        }catch (Exception $e){
+
+        }
     }
 
     function getEstados(){

@@ -10,6 +10,9 @@
 @endsection
 @section('content')
     <div id="app">
+        <div class="container">
+            <a href="{{route('pdf.generate')}}" target="_blank" class="btn btn-success">ver</a>
+        </div>
         <hr>
         <form id="factForm">
             <div class="row">
@@ -105,7 +108,8 @@
             <div class="col-md-10" align="left">
             </div>
             <div class="col-md-1">
-                <a href="#" class="btn btn-success" v-on:click="modalShow"><i class="fa fa-user-plus" aria-hidden="true"></i> Agregar Producto</a>
+                <a href="#" class="btn btn-success" v-on:click="modalShow">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i> Agregar Producto</a>
             </div>
         </div>
         <br>
@@ -185,7 +189,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" v-on:click="addUser">Guardar</button>
+                        <button type="button" class="btn btn-primary" >Guardar</button>
                     </div>
                 </div>
             </div>
@@ -201,5 +205,5 @@
 
     <script type="text/javascript" src="http://cdn.jsdelivr.net/vue.table/1.5.3/vue-table.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-    <script src="{{asset("js/forms/clientes.js")}}"> </script>
+    <script src="{{asset("js/forms/facturas.js")}}"> </script>
 @endsection

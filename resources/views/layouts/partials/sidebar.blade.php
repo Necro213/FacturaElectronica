@@ -34,10 +34,39 @@
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+            @if($nivel == 0 || $nivel == 1)
             <li><a href="{{route('usuarios.view')}}"><i class="fa fa-user" aria-hidden="true"></i> <span>Usuarios</span></a></li>
+            @else
             <li><a href="{{route('productos.view')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Productos</span></a></li>
             <li><a href="{{route('clientes.view')}}"><i class="fa fa-users" aria-hidden="true"></i> <span>Clientes</span></a></li>
-            <li><a href="{{route('facturas.view')}}"><i class="fa fa-file-text" aria-hidden="true"></i> <span>Facturas</span></a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-link"></i> <span>Facturas</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right" id="icon"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('facturas.view')}}"><i class="fa fa-file-text" aria-hidden="true"></i> <span>Factura</span></a></li>
+                    </ul>
+                </li>
+                <script>
+                    $('.treeview').on('click',function () {
+                        if($('.treeview').val() == true){
+                            $('#icon').removeClass('fa-angle-down');
+                            $('#icon').addClass('fa-angle-left');
+                            $('.treeview').removeClass('active');
+                            $('.treeview').removeClass('menu-open');
+                            $('.treeview').val(false);
+                        }else{
+                            $('#icon').removeClass('fa-angle-left');
+                            $('#icon').addClass('fa-angle-down');
+                            $('.treeview').addClass('active');
+                            $('.treeview').addClass('menu-open');
+                            $('.treeview').val(true);
+                        }
+                    })
+                </script>
+            @endif
 
         </ul><!-- /.sidebar-menu -->
     </section>

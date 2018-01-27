@@ -157,7 +157,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
-        yajra\Datatables\DataTablesServiceProvider::class
+        yajra\Datatables\DataTablesServiceProvider::class,
+        'Anouar\Fpdf\FpdfServiceProvider',
 
 
     ],
@@ -208,6 +209,7 @@ return [
 
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         'Datatables' => yajra\Datatables\Datatables::class,
+        'Fpdf'	  => 'Anouar\Fpdf\Facades\Fpdf',
         /*
          * Acacha Llum Aliases...
          *
